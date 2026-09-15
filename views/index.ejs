@@ -1,3 +1,51 @@
 <%-include("./partials/header.ejs")%>
+<div class="p-8">
+    <div class="flex justify-between">
+        <div>
+            <h1 class="text-4xl font-bold font-mono text-white">Books Read by me:</h1>
+        </div>
+        
+        <div class="paste-button ml-auto p-2">
+            <button class="button1">Filter By &nbsp; ▼</button>
+            <div class="dropdown-content">
+                <a id="top" href="/f_recency">Recency</a>
+                <a id="middle" href="/f_rating">Rating</a>
+                <a id="bottom" href="/f_title">Title</a>
+            </div>
+        </div>
+    </div>
 
+    <div class="grid grid-cols-2 gap-[4em]">
+
+        <%books.forEach((book) => {%>
+        
+        <div class="container2 border-2  p-6 flex flex-col gap-1 rounded-2xl">
+            <div class="flex gap-3 items-center">
+                <img class="self-center mb-4 h-[25em] w-[20em] bg-gray-700 rounded-xl" src="https://covers.openlibrary.org/b/isbn/<%='0'.repeat(10 - book.isbn.length)+book.isbn%>-M.jpg" alt="book">
+                <p><%=book.description%></p>
+            </div>
+            <form class="flex flex-col gap-2" method="post">
+                <div class="flex flex-row justify-between gap-2">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold"><%= book.title %></span>
+                        <span class="font-bold  text-blue-800"><%= book.author %></span>
+                    </div>
+                    <p class="text-xs text-gray-800"><%= book.l_date %></p>
+                    
+                </div>
+                <span class="font-bold  text-black">Rating: <%= book.rating %></span>
+                <div class="flex flex-1 gap-5 w-full mt-0">
+                    <input type="hidden" name="getid" value="<%='0'.repeat(10 - book.isbn.length)+book.isbn%>">
+                    <button type="submit" formaction="/edit" class="hover:bg-sky-700 hover:cursor-pointer text-gray-50 bg-sky-800 py-2 px-4 rounded-md">Edit</button>
+                    <button type="submit" formaction="/del" class="hover:bg-sky-700 hover:cursor-pointer text-gray-50 bg-sky-800 py-2 px-4 rounded-md">Delete</button>
+                </div>
+                
+            </form>
+        </div>
+
+        <%})%>
+
+    </div>
+    
+</div>
 <%-include("./partials/footer.ejs")%>

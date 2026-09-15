@@ -3,45 +3,43 @@
 
 <main class="flex flex-col justify-center items-center">
 
-    <h1 class="text-4xl font-bold mb-[2em] text-white">Add a new Book</h1>
+    <h1 class="text-4xl font-bold mb-[2em] text-white">Edit the Review.</h1>
         
-    <form action="/create" method="post" class="flex flex-col gap-[1.5em] p-2">
+    <form action="/patch_changes" method="post" class="flex flex-col gap-[1.5em] p-2">
 
         <div>
             <label for="bisbn" class="text-white text-[1.2em] font-bold mb-[0.3em]">Book ISBN:</label><br>
-            <input type="text" name="isbn" id="bisbn" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
+            <input value="<%=book.isbn%>" type="text" name="isbn" id="bisbn" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
         </div>
         
         
         <div>
             <label for="btitle" class="text-white text-[1.2em] font-bold mb-[0.3em]">Book Title:</label><br>
-            <input type="text" name="title" id="btitle" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
+            <input value="<%=book.title%>" type="text" name="title" id="btitle" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
         </div>
 
         <div>
             <label for="bauthor" class="text-white text-[1.2em] font-bold mb-[0.3em]">Author:</label><br>
-            <input type="text" name="author" id="bauthor" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
+            <input value="<%=book.author%>" type="text" name="author" id="bauthor" class="text-white h-[2em] w-[60ch] rounded-xl border-2 border-white p-2">
         </div>
 
         <div>
             <label for="bdesc" class="text-white text-[1.2em] font-bold mb-[0.3em]">Notes:</label><br>
-            <textarea  name="desc" class="text-white h-[12ch]  w-[60ch] rounded-xl border-2 border-white p-2" id="bdesc"></textarea>
+            <textarea name="desc" class="text-white h-[12ch]  w-[60ch] rounded-xl border-2 border-white p-2" id="bdesc"><%=book.description%></textarea>
         </div>
 
         <div>
             <label for="brating" class="text-white text-[1.2em] font-bold mb-[0.3em]">Rating:</label><br>
-            <input  name="rating" class="text-white h-[4ch] overflow-y-auto w-[8ch] p-2 rounded-xl border-2 border-white" id="brating"></input>
+            <input value="<%=book.rating%>"  name="rating" class="text-white h-[4ch] overflow-y-auto w-[8ch] p-2 rounded-xl border-2 border-white" id="brating"></input>
         </div>
 
             <!-- <button type="submit" class="text-black .button_top">Add!</button> -->
         <button type="submit" class="cursor-pointer transition-all bg-black text-white px-6 py-2 rounded-lg
             border-blue-800 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
             active:border-b-[2px] active:brightness-90 active:translate-y-[2px] w-fit self-center">
-        Submit</button>
+        Edit!</button>
 
     </form>
-
-    
 
 </main>
 
